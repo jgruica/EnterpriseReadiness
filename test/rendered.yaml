@@ -147,7 +147,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   labels:
-    release: cockroachdb
+    release: cockroachdb-1
   name: cockroachdb-cockroachdb-init
 spec:
   template:
