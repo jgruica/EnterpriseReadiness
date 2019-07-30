@@ -135,7 +135,7 @@ kind: PodDisruptionBudget
 metadata:
   labels:
     component: cockroachdb-cockroachdb
-    release: cockroachdb
+    release: cockroachdb-1
   name: cockroachdb-cockroachdb-budget
 spec:
   maxUnavailable: 1
