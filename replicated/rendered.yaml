@@ -1,0 +1,453 @@
+apiVersion: v1
+imagePullSecrets: []
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: kube-state-metrics-2.0.0
+  name: datadog-kube-state-metrics
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: datadog
+    release: datadog
+  name: datadog
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: datadog
+    release: datadog
+  name: datadog
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - events
+  - endpoints
+  - pods
+  - nodes
+  - componentstatuses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - quota.openshift.io
+  resources:
+  - clusterresourcequotas
+  verbs:
+  - get
+  - list
+- nonResourceURLs:
+  - /version
+  - /healthz
+  verbs:
+  - get
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - nodes/metrics
+  - nodes/spec
+  - nodes/proxy
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: kube-state-metrics-2.0.0
+  name: datadog-kube-state-metrics
+rules:
+- apiGroups:
+  - certificates.k8s.io
+  resources:
+  - certificatesigningrequests
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - cronjobs
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  - apps
+  resources:
+  - daemonsets
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - limitranges
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumes
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - policy
+  resources:
+  - poddisruptionbudgets
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  - apps
+  resources:
+  - replicasets
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - replicationcontrollers
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - resourcequotas
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  verbs:
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: datadog
+    release: datadog
+  name: datadog
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: datadog
+subjects:
+- kind: ServiceAccount
+  name: datadog
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: kube-state-metrics-2.0.0
+  name: datadog-kube-state-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: datadog-kube-state-metrics
+subjects:
+- kind: ServiceAccount
+  name: datadog-kube-state-metrics
+  namespace: default
+---
+apiVersion: v1
+data:
+  api-key: PERBVEFET0dfQVBJX0tFWT4=
+kind: Secret
+metadata:
+  labels:
+    app: datadog
+    release: datadog
+  name: datadog
+type: Opaque
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: kube-state-metrics-2.0.0
+  name: datadog-kube-state-metrics
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/name: kube-state-metrics
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: kube-state-metrics-2.0.0
+  name: datadog-kube-state-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kube-state-metrics
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: datadog
+        app.kubernetes.io/name: kube-state-metrics
+    spec:
+      containers:
+      - args:
+        - --collectors=certificatesigningrequests
+        - --collectors=configmaps
+        - --collectors=cronjobs
+        - --collectors=daemonsets
+        - --collectors=deployments
+        - --collectors=endpoints
+        - --collectors=horizontalpodautoscalers
+        - --collectors=ingresses
+        - --collectors=jobs
+        - --collectors=limitranges
+        - --collectors=namespaces
+        - --collectors=nodes
+        - --collectors=persistentvolumeclaims
+        - --collectors=persistentvolumes
+        - --collectors=poddisruptionbudgets
+        - --collectors=pods
+        - --collectors=replicasets
+        - --collectors=replicationcontrollers
+        - --collectors=resourcequotas
+        - --collectors=secrets
+        - --collectors=services
+        - --collectors=statefulsets
+        image: quay.io/coreos/kube-state-metrics:v1.6.0
+        imagePullPolicy: IfNotPresent
+        name: kube-state-metrics
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        resources: null
+      hostNetwork: false
+      securityContext:
+        fsGroup: 65534
+        runAsUser: 65534
+      serviceAccountName: datadog-kube-state-metrics
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: datadog
+    release: datadog
+  name: datadog
+spec:
+  template:
+    metadata:
+      annotations:
+        checksum/autoconf-config: 38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed
+        checksum/checksd-config: 38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed
+        checksum/confd-config: 38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed
+      labels:
+        app: datadog
+      name: datadog
+    spec:
+      containers:
+      - env:
+        - name: DD_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: api-key
+              name: datadog
+        - name: DD_LOG_LEVEL
+          value: INFO
+        - name: KUBERNETES
+          value: true
+        - name: DD_KUBERNETES_KUBELET_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_HEALTH_PORT
+          value: "5555"
+        image: datadog/agent:6.13.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /health
+            port: 5555
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: datadog
+        ports:
+        - containerPort: 8125
+          name: dogstatsdport
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: runtimesocket
+          readOnly: true
+        - mountPath: /host/proc
+          name: procdir
+          readOnly: true
+        - mountPath: /host/sys/fs/cgroup
+          name: cgroups
+          readOnly: true
+        - mountPath: /var/run/s6
+          name: s6-run
+      serviceAccountName: datadog
+      volumes:
+      - hostPath:
+          path: /var/run/docker.sock
+        name: runtimesocket
+      - hostPath:
+          path: /proc
+        name: procdir
+      - hostPath:
+          path: /sys/fs/cgroup
+        name: cgroups
+      - emptyDir: {}
+        name: s6-run
+  updateStrategy:
+    type: RollingUpdate
