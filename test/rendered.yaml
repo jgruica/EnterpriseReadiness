@@ -1713,7 +1713,7 @@ spec:
           value: IfNotPresent
         - name: LOG_FORMAT
           value: json
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -1780,7 +1780,7 @@ spec:
         - name: SHIP_IMAGE
           value: replicated/ship
         - name: SHIP_TAG
-          value: 0.49.1
+          value: 0.50.0
         - name: SHIP_PULL_POLICY
           value: IfNotPresent
         - name: LOG_LEVEL
@@ -1812,7 +1812,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -1868,7 +1868,7 @@ spec:
               name: ship-enterprise-postgres
         - name: LOG_FORMAT
           value: json
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         resources:
@@ -1925,7 +1925,7 @@ spec:
         - name: SHIP_IMAGE
           value: replicated/ship
         - name: SHIP_TAG
-          value: 0.49.1
+          value: 0.50.0
         - name: SHIP_PULL_POLICY
           value: IfNotPresent
         - name: LOG_LEVEL
@@ -1957,7 +1957,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -2019,7 +2019,7 @@ spec:
         - name: SHIP_IMAGE
           value: replicated/ship
         - name: SHIP_TAG
-          value: 0.49.1
+          value: 0.50.0
         - name: SHIP_PULL_POLICY
           value: IfNotPresent
         - name: LOG_LEVEL
@@ -2051,7 +2051,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -2100,7 +2100,7 @@ spec:
         - name: SHIP_IMAGE
           value: replicated/ship
         - name: SHIP_TAG
-          value: 0.49.1
+          value: 0.50.0
         - name: SHIP_PULL_POLICY
           value: IfNotPresent
         - name: LOG_LEVEL
@@ -2131,7 +2131,7 @@ spec:
           value: ""
         - name: LOG_FORMAT
           value: json
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:b61aa71
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:65c09c2
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
