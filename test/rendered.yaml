@@ -1592,7 +1592,7 @@ spec:
           value: https://pg.replicated.com/graphql
         - name: AUTO_CREATE_CLUSTER
           value: "0"
-        image: registry.replicated.com/ship-enterprise/ship-cluster-api:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-api:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-api
         ports:
@@ -1634,7 +1634,7 @@ spec:
       containers:
       - args:
         - /scripts/start-ship-cluster-ui.sh
-        image: registry.replicated.com/ship-enterprise/ship-cluster-ui:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-ui:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-ui
         ports:
@@ -1713,7 +1713,7 @@ spec:
           value: IfNotPresent
         - name: LOG_FORMAT
           value: json
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -1812,7 +1812,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -1906,7 +1906,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -2000,7 +2000,7 @@ spec:
               name: github-app-private-key
         - name: GITHUB_INTEGRATION_ID
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -2080,7 +2080,7 @@ spec:
           value: ""
         - name: LOG_FORMAT
           value: json
-        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-worker:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-worker
         ports:
@@ -2558,7 +2558,7 @@ spec:
               name: ship-enterprise-postgres
         - name: ENSURE_LOCAL_CLUSTER
           value: ""
-        image: registry.replicated.com/ship-enterprise/ship-cluster-api:0dc003c
+        image: registry.replicated.com/ship-enterprise/ship-cluster-api:fea3338
         imagePullPolicy: IfNotPresent
         name: ship-cluster-local-cluster
       imagePullSecrets:
