@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: datadog
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: kube-state-metrics-2.0.0
+    helm.sh/chart: kube-state-metrics-2.2.3
   name: datadog-kube-state-metrics
 ---
 apiVersion: v1
@@ -76,7 +76,7 @@ metadata:
     app.kubernetes.io/instance: datadog
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: kube-state-metrics-2.0.0
+    helm.sh/chart: kube-state-metrics-2.2.3
   name: datadog-kube-state-metrics
 rules:
 - apiGroups:
@@ -132,6 +132,7 @@ rules:
   - watch
 - apiGroups:
   - extensions
+  - networking.k8s.io
   resources:
   - ingresses
   verbs:
@@ -236,6 +237,13 @@ rules:
   verbs:
   - list
   - watch
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  verbs:
+  - list
+  - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -260,7 +268,7 @@ metadata:
     app.kubernetes.io/instance: datadog
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: kube-state-metrics-2.0.0
+    helm.sh/chart: kube-state-metrics-2.2.3
   name: datadog-kube-state-metrics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -291,7 +299,7 @@ metadata:
     app.kubernetes.io/instance: datadog
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: kube-state-metrics-2.0.0
+    helm.sh/chart: kube-state-metrics-2.2.3
   name: datadog-kube-state-metrics
 spec:
   ports:
@@ -311,7 +319,7 @@ metadata:
     app.kubernetes.io/instance: datadog
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: kube-state-metrics
-    helm.sh/chart: kube-state-metrics-2.0.0
+    helm.sh/chart: kube-state-metrics-2.2.3
   name: datadog-kube-state-metrics
 spec:
   replicas: 1
@@ -348,7 +356,8 @@ spec:
         - --collectors=secrets
         - --collectors=services
         - --collectors=statefulsets
-        image: quay.io/coreos/kube-state-metrics:v1.6.0
+        - --collectors=storageclasses
+        image: quay.io/coreos/kube-state-metrics:v1.7.2
         imagePullPolicy: IfNotPresent
         name: kube-state-metrics
         ports:
