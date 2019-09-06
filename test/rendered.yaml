@@ -148,7 +148,7 @@ metadata:
 ---
 apiVersion: v1
 data:
-  admin-password: cnlxdUJiSEVzNW45VVdyWnVxUDhBWmcxY2JkVElRQlNQSk5DdmFzcw==
+  admin-password: dE1NWVVKakx4b0J6VTNUOHpJeEpHVU9mallQRmtaWmxDQk5TamFMaQ==
   admin-user: YWRtaW4=
   ldap-toml: ""
 kind: Secret
@@ -198,10 +198,10 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: 512d1fdafd31fbbce00e8546241de7d9013ed15d4f883f01dc2875c5a9099b0f
+        checksum/config: 4ab2fd36f00728633ac7c695c06475e3e842003ac3a1df2e03ae5a4b646bc5bd
         checksum/dashboards-json-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
         checksum/sc-dashboard-provider-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-        checksum/secret: aa143244c63b05813c9cba89212acd8428db5f8d4f832fa4366d2d688e723daf
+        checksum/secret: 496e308d451778f17190b596d9429d8f0f341aff811ac90815cc3550c8f4681c
       labels:
         app: grafana
         release: grafana
