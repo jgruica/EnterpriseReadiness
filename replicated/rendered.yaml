@@ -459,4 +459,6 @@ spec:
       - emptyDir: {}
         name: s6-run
   updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 10%
     type: RollingUpdate
