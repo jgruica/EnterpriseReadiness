@@ -148,7 +148,7 @@ metadata:
 ---
 apiVersion: v1
 data:
-  admin-password: RmVSNXRzclRrcWtjWk85M2ZNcVFXRWYxM2ZONWxxMFk1VzJGMDRnUQ==
+  admin-password: YXhUekFzT3B6TGtESDFDbzRyVXNFSHdIZnFzYzZ5OXNZOWhrVEJyNA==
   admin-user: YWRtaW4=
   ldap-toml: ""
 kind: Secret
@@ -179,7 +179,7 @@ spec:
     release: grafana
   type: ClusterIP
 ---
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -198,10 +198,10 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: 5e2aea4347cd3189ac7c6cc54bbbaca62e0b2e913c2a9acab4b042655cc02d0c
+        checksum/config: e5f251c2900cf425be1847da3e47edd17c6c51447d06162dc709a824fb0de115
         checksum/dashboards-json-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
         checksum/sc-dashboard-provider-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-        checksum/secret: ac9af2dc6bb58c6a1557287b084de8b82b2c8fa6b82a65bab0a03a60b94793b3
+        checksum/secret: 501997cc8de523feb883d2f871e7fb7e33cb5e2fdeae90b1ec6c69d956372700
       labels:
         app: grafana
         release: grafana
@@ -266,7 +266,7 @@ spec:
       - emptyDir: {}
         name: storage
 ---
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   annotations:
@@ -315,7 +315,7 @@ spec:
   - downwardAPI
   - persistentVolumeClaim
 ---
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   labels:
