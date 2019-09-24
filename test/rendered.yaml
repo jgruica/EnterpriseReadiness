@@ -59,7 +59,7 @@ spec:
   template:
     metadata:
       labels:
-        chart: cockroachdb-2.1.12
+        chart: cockroachdb-2.1.13
         component: cockroachdb-cockroachdb
         heritage: Tiller
         release: cockroachdb
