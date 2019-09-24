@@ -375,7 +375,7 @@ spec:
         runAsUser: 65534
       serviceAccountName: datadog-kube-state-metrics
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
@@ -383,6 +383,9 @@ metadata:
     release: datadog
   name: datadog
 spec:
+  selector:
+    matchLabels:
+      app: datadog
   template:
     metadata:
       annotations:
