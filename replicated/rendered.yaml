@@ -14,6 +14,11 @@ kind: ServiceAccount
 metadata:
   labels:
     app: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/version: 6.14.0
+    helm.sh/chart: datadog-1.37.0
     release: datadog2
   name: datadog
 ---
@@ -22,6 +27,11 @@ kind: ClusterRole
 metadata:
   labels:
     app: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/version: 6.14.0
+    helm.sh/chart: datadog-1.37.0
     release: datadog
   name: datadog
 rules:
@@ -250,6 +260,11 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     app: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/version: 6.14.0
+    helm.sh/chart: datadog-1.37.0
     release: datadog
   name: datadog
 roleRef:
@@ -286,6 +301,11 @@ kind: Secret
 metadata:
   labels:
     app: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/version: 6.14.0
+    helm.sh/chart: datadog-1.37.0
     release: datadog
   name: datadog
 type: Opaque
@@ -380,6 +400,11 @@ kind: DaemonSet
 metadata:
   labels:
     app: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/version: 6.14.0
+    helm.sh/chart: datadog-1.37.0
     release: datadog
   name: datadog
 spec:
@@ -413,7 +438,7 @@ spec:
               fieldPath: status.hostIP
         - name: DD_HEALTH_PORT
           value: "5555"
-        image: datadog/agent:6.13.0
+        image: datadog/agent:6.14.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 6
