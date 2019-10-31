@@ -18,7 +18,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: datadog
     app.kubernetes.io/version: 6.14.0
-    helm.sh/chart: datadog-1.38.1
+    helm.sh/chart: datadog-1.38.2
     release: datadog2
   name: datadog
 ---
@@ -31,7 +31,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: datadog
     app.kubernetes.io/version: 6.14.0
-    helm.sh/chart: datadog-1.38.1
+    helm.sh/chart: datadog-1.38.2
     release: datadog
   name: datadog
 rules:
@@ -264,7 +264,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: datadog
     app.kubernetes.io/version: 6.14.0
-    helm.sh/chart: datadog-1.38.1
+    helm.sh/chart: datadog-1.38.2
     release: datadog
   name: datadog
 roleRef:
@@ -305,7 +305,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: datadog
     app.kubernetes.io/version: 6.14.0
-    helm.sh/chart: datadog-1.38.1
+    helm.sh/chart: datadog-1.38.2
     release: datadog
   name: datadog
 type: Opaque
@@ -404,7 +404,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: datadog
     app.kubernetes.io/version: 6.14.0
-    helm.sh/chart: datadog-1.38.1
+    helm.sh/chart: datadog-1.38.2
     release: datadog
   name: datadog
 spec:
