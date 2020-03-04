@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import LoadingPage from './LoadingPage';
+import find from "lodash/find";
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -39,6 +40,29 @@ class QuestionPage extends Component {
       questionIndex: 0,
       selectedChoice: null
     }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if(nextProps.data !== this.props.data && nextProps.data.assessment) {
+      this.getLastResponse(nextState.questionIndex, nextProps.data.assessment);
+    }
+  }
+
+  componentDidUpdate(lastProps, lastState) {
+    if(lastState.questionIndex !== this.state.questionIndex) {
+      this.getLastResponse(this.state.questionIndex, this.props.data.assessment);
+    }
+  }
+
+  getLastResponse(questionIndex, assessment) {
+    const { questions } = assessment;
+    const question = questions[this.state.questionIndex]
+    const selectedChoice = find(question.choices, { isSelected: true });
+    if(selectedChoice) {
+      this.setState({ selectedChoice: selectedChoice.id });
+    }
+
+    console.log(selectedChoice);
   }
 
   onPreviousClick = () => {
